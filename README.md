@@ -1,36 +1,85 @@
-# Decentralized Degree Attestation System
+# Degree Attestation System
 
-An automated, blockchain-backed microservices platform designed to cryptographically verify and attest academic credentials. This system eliminates fraudulent credentials by combining Optical Character Recognition (OCR) for document parsing with immutable Solidity smart contracts for permanent record-keeping.
+A secure, decentralized microservices-based platform for verifying and attesting academic degrees using blockchain smart contracts, automated with Docker and Docker Compose.
 
-This project is architected as a distributed multi-tier application to demonstrate modern DevOps practices, including multi-container orchestration and local bridge networking.
+## 🏛️ Architecture Overview
 
-## 🏗️ System Architecture
+The system is split into two independent, containerized microservices:
 
-The application is split into three distinct, decoupled services:
+1. **Frontend (`degree-frontend/`)**: Built with **React, Vite, and Tailwind CSS**, running on Node 22. Provides the user interface for submitting and verifying degree records.
+2. **Backend (`degree-backend/`)**: Built with **Hardhat and Solidity**, running on Node 18. Manages local blockchain simulation, smart contract compilation, and deployment.
 
-1. **Frontend Client:** A React.js user interface handling document uploads and user interaction.
-2. **Validation Engine:** A Node.js service utilizing Tesseract.js to perform OCR on uploaded degrees, extracting and verifying text data.
-3. **Blockchain Network:** A local Ethereum node deployed via Hardhat, managing the Solidity smart contracts that permanently store the verified attestation hashes.
+---
 
-## 🛠️ Technology Stack
+## 🚀 Quick Start with Docker Compose
 
-* **Frontend:** React.js, JavaScript, HTML/CSS
-* **Smart Contracts:** Solidity, Hardhat, Ethers.js
-* **Processing:** Tesseract.js (OCR)
-* **DevOps & Infrastructure:** Docker, Docker Compose, Internal Bridge Networking (Implementation In Progress)
-
-## 🚀 Getting Started (Local Development)
-
-*Note: This project is currently migrating to a fully containerized Docker Compose environment. For now, services must be spun up independently.*
+The entire application stack can be spun up simultaneously using Docker Compose without needing to install Node.js locally.
 
 ### Prerequisites
-* Node.js (v16+)
-* npm or yarn
-* Git
+* [Docker Desktop](https://www.docker.com/) installed and running on your machine.
 
-### 1. Start the Blockchain Network (Hardhat)
-```bash
-# Navigate to the smart contracts directory (adjust path as needed)
-cd backend 
-npm install
-npx hardhat node
+### Running the Application
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Sumaanalikhan/degree-attestation-system.git](https://github.com/Sumaanalikhan/degree-attestation-system.git)
+   cd degree-attestation-system
+# Degree Attestation System
+
+A secure, decentralized microservices-based platform for verifying and attesting academic degrees using blockchain smart contracts, automated with Docker and Docker Compose.
+
+## 🏛️ Architecture Overview
+
+The system is split into two independent, containerized microservices:
+
+1. **Frontend (`degree-frontend/`)**: Built with **React, Vite, and Tailwind CSS**, running on Node 22. Provides the user interface for submitting and verifying degree records.
+2. **Backend (`degree-backend/`)**: Built with **Hardhat and Solidity**, running on Node 18. Manages local blockchain simulation, smart contract compilation, and deployment.
+
+---
+
+## 🚀 Quick Start with Docker Compose
+
+The entire application stack can be spun up simultaneously using Docker Compose without needing to install Node.js locally.
+
+### Prerequisites
+* [Docker Desktop](https://www.docker.com/) installed and running on your machine.
+
+### Running the Application
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Sumaanalikhan/degree-attestation-system.git](https://github.com/Sumaanalikhan/degree-attestation-system.git)
+   cd degree-attestation-system
+
+Spin up the containers:
+
+Bash
+docker compose up --build -d
+Access the services:
+
+Frontend UI: http://localhost:5173
+
+Blockchain RPC Node: http://localhost:8545
+
+Shut down the environment:
+
+Bash
+docker compose down
+🛠️ Project Structure
+Plaintext
+degree-attestation-system/
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # GitHub Actions CI pipeline configuration
+├── degree-backend/            # Blockchain & Smart Contract tier (Node 18)
+│   ├── contracts/             # Solidity smart contracts (.sol)
+│   ├── Dockerfile
+│   └── hardhat.config.js
+├── degree-frontend/           # User Interface tier (Node 22)
+│   ├── src/                   # React components & pages
+│   ├── Dockerfile
+│   └── vite.config.js
+├── docker-compose.yml         # Multi-container orchestration blueprint
+└── README.md
+🤖 CI/CD Pipeline
+This repository features automated infrastructure validation using GitHub Actions. Every time code is pushed to the main or master branch, the CI server executes a test build of the Docker Compose stack to ensure container health and prevent deployment regressions.

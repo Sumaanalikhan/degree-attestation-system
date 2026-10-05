@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build: ./degree-frontend
+    ports:
+      - "5173:5173"
+    container_name: degree-frontend
+
+  backend:
+    build: ./degree-backend
+    ports:
+      - "8545:8545"
+    container_name: degree-backend
