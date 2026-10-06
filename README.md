@@ -81,5 +81,6 @@ degree-attestation-system/
 │   └── vite.config.js
 ├── docker-compose.yml         # Multi-container orchestration blueprint
 └── README.md
+
 🤖 CI/CD Pipeline
 This repository features automated infrastructure validation using GitHub Actions. Every time code is pushed to the main or master branch, the CI server executes a test build of the Docker Compose stack to ensure container health and prevent deployment regressions.
